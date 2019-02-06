@@ -45,6 +45,6 @@ public class HomePage extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
-       
+
     }
 }

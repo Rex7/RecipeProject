@@ -13,30 +13,30 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdapter.ViewHolders> {
+public class MealtypeAdapter extends RecyclerView.Adapter<MealtypeAdapter.ViewHolders> {
     private Context context;
 
 
-    recycler_mainAdapter(Context context) {
+    MealtypeAdapter(Context context) {
         this.context = context;
 
     }
 
 
-    private String[] array_title = {"World Cuisine", "Diet and Health", "Seasonal","Meal Type","Dish Type","Cooking Style"};
-    private int[] drawable_array = {R.drawable.worldcuisine, R.drawable.dietandhealth, R.drawable.seasonal, R.drawable.southindian,R.drawable.dishtype,R.drawable.cooking_style};
+    private String[] array_title = {"Breakfast","brunch","lunch","Dinner"};
+    private int[] drawable_array = {R.drawable.breakfast, R.drawable.brunch, R.drawable.lunch, R.drawable.dinner};
 
 
     @Override
-    public ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MealtypeAdapter.ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_cardview, parent, false);
-        return new ViewHolders(v, context);
+        return new MealtypeAdapter.ViewHolders(v, context);
 
 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolders holder, int position) {
+    public void onBindViewHolder(MealtypeAdapter.ViewHolders holder, int position) {
         holder.title.setText(array_title[position]);
         Glide.with(context).load(drawable_array[position]).into(holder.cover_image);
     }
@@ -58,8 +58,8 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
             super(view);
             this.cont = cont;
             cover_image =  view.findViewById(R.id.medCover_adp);
-            title = view.findViewById(R.id.title_adp);
-            explore = view.findViewById(R.id.explore);
+            title =  view.findViewById(R.id.title_adp);
+            explore =  view.findViewById(R.id.explore);
             explore.setOnClickListener(this);
 
 
@@ -69,21 +69,20 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.explore:
-                    if (title.getText().equals("Medicine")) {
+                    if (title.getText().equals("Breakfast")) {
                         cont.startActivity(new Intent(cont, HomePage.class));
-                    } else if (title.getText().equals("Books")) {
+                    } else if (title.getText().equals("brunch")) {
 
 
 
-                            cont.startActivity(new Intent(cont, HomePage.class));
+                        cont.startActivity(new Intent(cont, HomePage.class));
 
 
-                    } else if (title.getText().equals("R&D")) {
+                    } else if (title.getText().equals("lunch")) {
                         cont.startActivity(new Intent(cont, HomePage.class));
                     }
-                    else if(title.getText().equals("Meal Type"))
-                    {
-                        cont.startActivity(new Intent(cont,MealType.class));
+                    else if (title.getText().equals("Dinner")) {
+                        cont.startActivity(new Intent(cont, HomePage.class));
                     }
 
                     break;
